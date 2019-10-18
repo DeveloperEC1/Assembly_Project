@@ -1,8 +1,8 @@
 section .text
-   global _start    ;must be declared for using gcc
+   global _start      ;must be declared for using gcc
     
-_start:             ;tell linker entry point
-   mov  al,'2'
+_start:               ;tell linker entry point
+   mov  al, '2'
    sub     al, '0'
     
    mov  bl, '2'
@@ -22,15 +22,15 @@ _start:             ;tell linker entry point
    mov  [res], al
    mov  ecx, msg1   
    mov  edx, len1
-   mov  ebx, 1  ;file descriptor (stdout)
-   mov  eax, 4  ;system call number (sys_write)
-   int  0x80    ;call kernel
+   mov  ebx, 1       ;file descriptor (stdout)
+   mov  eax, 4       ;system call number (sys_write)
+   int  0x80         ;call kernel
     
    mov  ecx, res
    mov  edx, 1
-   mov  ebx, 1  ;file descriptor (stdout)
-   mov  eax, 4  ;system call number (sys_write)
-   int  0x80    ;call kernel
+   mov  ebx, 1       ;file descriptor (stdout)
+   mov  eax, 4       ;system call number (sys_write)
+   int  0x80         ;call kernel
    
    mov  eax, '1'
    sub  eax, '0'
@@ -52,39 +52,39 @@ _start:             ;tell linker entry point
    mov  [sum], eax
    mov  ecx, msg2   
    mov  edx, len2
-   mov  ebx, 1           ;file descriptor (stdout)
-   mov  eax, 4           ;system call number (sys_write)
-   int  0x80             ;call kernel
+   mov  ebx, 1       ;file descriptor (stdout)
+   mov  eax, 4       ;system call number (sys_write)
+   int  0x80         ;call kernel
     
    mov  ecx, sum
    mov  edx, 1
-   mov  ebx, 1           ;file descriptor (stdout)
-   mov  eax, 4           ;system call number (sys_write)
-   int  0x80             ;call kernel
+   mov  ebx, 1       ;file descriptor (stdout)
+   mov  eax, 4       ;system call number (sys_write)
+   int  0x80         ;call kernel
    
-   mov  edx, len3     ;message length
-   mov  ecx, msg3     ;message to write
+   mov  edx, len3    ;message length
+   mov  ecx, msg3    ;message to write
    mov  ebx, 1       ;file descriptor (stdout)
    mov  eax, 4       ;system call number (sys_write)
-   int  0x80        ;call kernel    
+   int  0x80         ;call kernel    
     
-   mov  edx, len4     ;message length
-   mov  ecx, msg4     ;message to write
+   mov  edx, len4    ;message length
+   mov  ecx, msg4    ;message to write
    mov  ebx, 1       ;file descriptor (stdout)
    mov  eax, 4       ;system call number (sys_write)
-   int  0x80        ;call kernel 
+   int  0x80         ;call kernel 
     
-   mov  edx, len5     ;message length
-   mov  ecx, msg5     ;message to write
+   mov  edx, len5    ;message length
+   mov  ecx, msg5    ;message to write
    mov  ebx, 1       ;file descriptor (stdout)
    mov  eax, 4       ;system call number (sys_write)
-   int  0x80        ;call kernel 
+   int  0x80         ;call kernel 
    
-   mov  edx, len6     ;message length
-   mov  ecx, msg6     ;message to write
+   mov  edx, len6    ;message length
+   mov  ecx, msg6    ;message to write
    mov  ebx, 1       ;file descriptor (stdout)
    mov  eax, 4       ;system call number (sys_write)
-   int  0x80        ;call kernel 
+   int  0x80         ;call kernel 
    
    mov  eax, 45      ;sys_brk
    xor  ebx, ebx
@@ -96,14 +96,14 @@ _start:             ;tell linker entry point
    int  0X80
     
    cmp  eax, 0
-   jl   exit    ;exit, if error 
+   jl   exit         ;exit, if error 
    mov  edi, eax     ;EDI = highest available address
    sub  edi, 4       ;pointing to the last DWORD  
    mov  ecx, 4096    ;number of DWORDs allocated
    xor  eax, eax     ;clear eax
-   std           ;backward
-   rep  stosd            ;repete for entire allocated area
-   cld           ;put DF flag to normal state
+   std               ;backward
+   rep  stosd        ;repete for entire allocated area
+   cld               ;put DF flag to normal state
    
    mov  edx, len7    ;message length
    mov  ecx, msg7    ;message to write
@@ -111,10 +111,10 @@ _start:             ;tell linker entry point
    mov  eax, 4       ;system call number (sys_write)
    int  0x80         ;call kernel
    
-   mov  [msg7],  dword 'Name'    ; Changed the name to Nuha Ali
+   mov  [msg7], dword 'Name'    ; Changed the name to Nuha Ali
     
    ;writing the name 'Here Cohen'
-   mov  edx, len7     ;message length
+   mov  edx, len7    ;message length
    mov  ecx, msg7    ;message to write
    mov  ebx, 1       ;file descriptor (stdout)
    mov  eax, 4       ;system call number (sys_write)
@@ -142,18 +142,18 @@ _exit:
    mov   [largest], ecx
    mov   ecx, msg8
    mov   edx, len8
-   mov   ebx, 1 ;file descriptor (stdout)
-   mov   eax, 4 ;system call number (sys_write)
-   int   0x80   ;call kernel
+   mov   ebx, 1      ;file descriptor (stdout)
+   mov   eax, 4      ;system call number (sys_write)
+   int   0x80        ;call kernel
     
    mov   ecx, largest
    mov   edx, 2
-   mov   ebx, 1 ;file descriptor (stdout)
-   mov   eax, 4 ;system call number (sys_write)
-   int   0x80   ;call kernel
+   mov   ebx, 1      ;file descriptor (stdout)
+   mov   eax, 4.     ;system call number (sys_write)
+   int   0x80        ;call kernel
     
-   mov   eax, 1 ;system call number (sys_exit)
-   int   0x80   ;call kernel
+   mov   eax, 1.     ;system call number (sys_exit)
+   int   0x80        ;call kernel
    
 exit:
    mov   eax, 1
