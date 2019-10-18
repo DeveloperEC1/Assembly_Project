@@ -1,18 +1,18 @@
 section .text
-   global _start      ;must be declared for using gcc
+   global _start     ;must be declared for using gcc
     
-_start:               ;tell linker entry point
+_start:              ;tell linker entry point
    mov  al, '2'
-   sub     al, '0'
+   sub  al, '0'
     
    mov  bl, '2'
-   sub     bl, '0'
+   sub  bl, '0'
    
    mov  cl, '2'
-   sub     cl, '0'
+   sub  cl, '0'
    
    mov  dl, '1'
-   sub     dl, '0'
+   sub  dl, '0'
    
    mul  bl
    mul  cl
@@ -126,39 +126,39 @@ _start:               ;tell linker entry point
    mov  edx, len9
    int  0x80         ;print a message
    
-   mov   ecx, [num1]
-   mov   ecx, [num2]
-   cmp   ecx, [num3]
-   jg    check_fourth_num
-   mov   ecx, [num2]
-   mov   ecx, [num3]
+   mov  ecx, [num1]
+   mov  ecx, [num2]
+   cmp  ecx, [num3]
+   jg   check_fourth_num
+   mov  ecx, [num2]
+   mov  ecx, [num3]
    
 check_fourth_num:
-   cmp   ecx, [num4]
-   jg    _exit
-   mov   ecx, [num4]
+   cmp  ecx, [num4]
+   jg   _exit
+   mov  ecx, [num4]
    
 _exit:
-   mov   [largest], ecx
-   mov   ecx, msg8
-   mov   edx, len8
-   mov   ebx, 1      ;file descriptor (stdout)
-   mov   eax, 4      ;system call number (sys_write)
-   int   0x80        ;call kernel
+   mov  [largest], ecx
+   mov  ecx, msg8
+   mov  edx, len8
+   mov  ebx, 1      ;file descriptor (stdout)
+   mov  eax, 4      ;system call number (sys_write)
+   int  0x80        ;call kernel
     
-   mov   ecx, largest
-   mov   edx, 2
-   mov   ebx, 1      ;file descriptor (stdout)
-   mov   eax, 4      ;system call number (sys_write)
-   int   0x80        ;call kernel
+   mov  ecx, largest
+   mov  edx, 2
+   mov  ebx, 1      ;file descriptor (stdout)
+   mov  eax, 4      ;system call number (sys_write)
+   int  0x80        ;call kernel
     
-   mov   eax, 1      ;system call number (sys_exit)
-   int   0x80        ;call kernel
+   mov  eax, 1      ;system call number (sys_exit)
+   int  0x80        ;call kernel
    
 exit:
-   mov   eax, 1
-   xor   ebx, ebx
-   int   0X80
+   mov  eax, 1
+   xor  ebx, ebx
+   int  0X80
 
 section .data
 msg1 db "The result of the numbers is: " 
