@@ -111,7 +111,7 @@ _start:               ;tell linker entry point
    mov  eax, 4       ;system call number (sys_write)
    int  0x80         ;call kernel
    
-   mov  [msg7], dword 'Name'    ; Changed the name to Name Ali
+   mov  [msg7], dword 'Name'    ; Changed the name to Name Cohen
     
    ;writing the name 'Here Cohen'
    mov  edx, len7    ;message length
