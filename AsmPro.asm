@@ -105,26 +105,26 @@ _start:              ;tell linker entry point
    rep  stosd        ;repete for entire allocated area
    cld               ;put DF flag to normal state
    
-   mov  edx, len7    ;message length
-   mov  ecx, msg7    ;message to write
-   mov  ebx, 1       ;file descriptor (stdout)
-   mov  eax, 4       ;system call number (sys_write)
-   int  0x80         ;call kernel
-   
-   mov  [msg7], dword 'Name'    ; Changed the name to 'Name Cohen'
-    
-   ;writing the name 'Here Cohen'
-   mov  edx, len7    ;message length
-   mov  ecx, msg7    ;message to write
-   mov  ebx, 1       ;file descriptor (stdout)
-   mov  eax, 4       ;system call number (sys_write)
-   int  0x80         ;call kernel
-   
    mov  eax, 4
    mov  ebx, 1
-   mov  ecx, msg9
-   mov  edx, len9
+   mov  ecx, msg7
+   mov  edx, len7
    int  0x80         ;print a message
+   
+   mov  edx, len8    ;message length
+   mov  ecx, msg8    ;message to write
+   mov  ebx, 1       ;file descriptor (stdout)
+   mov  eax, 4       ;system call number (sys_write)
+   int  0x80         ;call kernel
+   
+   mov  [msg8], dword 'Name'    ; Changed the name to 'Name Cohen'
+    
+   ;writing the name 'Here Cohen'
+   mov  edx, len8    ;message length
+   mov  ecx, msg8    ;message to write
+   mov  ebx, 1       ;file descriptor (stdout)
+   mov  eax, 4       ;system call number (sys_write)
+   int  0x80         ;call kernel
    
    mov  ecx, [num1]
    mov  ecx, [num2]
@@ -140,8 +140,8 @@ check_fourth_num:
    
 _exit:
    mov  [largest], ecx
-   mov  ecx, msg8
-   mov  edx, len8
+   mov  ecx, msg9
+   mov  edx, len9
    mov  ebx, 1      ;file descriptor (stdout)
    mov  eax, 4      ;system call number (sys_write)
    int  0x80        ;call kernel
@@ -179,18 +179,18 @@ len5 equ $ - msg5
 msg6 db 'Elior Cohen', 0xA, 0Xd
 len6 equ $ - msg6
 
-msg7 db 'Here Cohen', 0xA, 0Xd
-len7 equ $ - msg7   
+msg7 db "Allocated 16 kb of memory!", 0xA, 0xD
+len7 equ $ - msg7
 
-msg8 db "The largest digit is: "
-len8 equ $ - msg8 
+msg8 db 'Here Cohen', 0xA, 0Xd
+len8 equ $ - msg8   
+
+msg9 db "The largest digit is: "
+len9 equ $ - msg9 
 num1 dd '47'
 num2 dd '55'
 num3 dd '31'
 num4 dd '22'
-
-msg9 db "Allocated 16 kb of memory!", 0xA, 0xD
-len9 equ $ - msg9
 
 segment .bss
 res resb 1
